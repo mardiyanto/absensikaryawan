@@ -16,6 +16,14 @@
                                     <span class="fas fa-retweet"></span>
                                 </span>
                             </div>
+                            <label for="nama_shift" class="label-control">Jam Shift <?php echo form_error('nama_shift') ?></label>
+                           
+                            <div class="input-group">
+                                 <input type="time"  class="form-control timepicker" data-error="Jam Shift harus diisi" name="jam_shift" id="jam_shift" placeholder="Jam Shift" value="<?php echo $jam_shift; ?>" required />
+                                <span class="input-group-addon">
+                                    <span class="fa fa-clock-o"></span>
+                                </span>
+                            </div>
                             <div class="help-block with-errors"></div>
                         </div>
                 </div>

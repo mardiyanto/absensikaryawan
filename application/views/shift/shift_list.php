@@ -26,6 +26,7 @@
                             <tr>
                                 <th>No</th>
                                 <th>Nama Shift</th>
+                                <th>jam Shift</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -36,6 +37,7 @@
                             <tr>
                                 <td><?php echo ++$start ?></td>
                                 <td><?php echo $shift->nama_shift ?></td>
+                                <td><?php echo $shift->jam_shift ?></td>
                                 <td>
                                     <?php
                                         echo anchor(site_url('shift/lihat/' . $shift->id_shift), '<i class="fa fa-eye fa-lg"></i>&nbsp;&nbsp;Lihat', array('title' => 'detail', 'class' => 'btn btn-md btn-success btn3d'));

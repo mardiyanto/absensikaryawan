@@ -1,11 +1,11 @@
 <div class="box box-widget">
-    <?php
+<?php
     $params['data'] = $id_karyawan;
     $params['level'] = 'H';
-    $params['size'] = 4;
+    $params['size'] = 20; // Mengubah ukuran piksel menjadi lebih besar, misalnya 20
     $params['savename'] = FCPATH . "uploads/qr_image/" . $id_karyawan . 'code.png';
     $this->ciqrcode->generate($params);
-    ?>
+?>
 
     <div id="print-area">
         <!-- Widget: user widget style 1 -->

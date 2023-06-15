@@ -87,6 +87,7 @@ class Shift extends CI_Controller
             'action' => site_url('shift/create_action'),
             'id_shift' => set_value('id_shift'),
             'nama_shift' => set_value('nama_shift'),
+            'jam_shift' => set_value('jam_shift'),
             'user' => $user, 'users'     => $this->ion_auth->user()->row(),
             'users'     => $this->ion_auth->user()->row(),
         );
@@ -106,6 +107,7 @@ class Shift extends CI_Controller
         } else {
             $data = array(
                 'nama_shift' => strtoupper($this->input->post('nama_shift', TRUE)),
+                'jam_shift' => strtoupper($this->input->post('jam_shift', TRUE)),
             );
 
             $this->Shift_model->insert($data);
@@ -129,6 +131,7 @@ class Shift extends CI_Controller
                 'action' => site_url('shift/update_action'),
                 'id_shift' => set_value('id_shift', $row->id_shift),
                 'nama_shift' => set_value('nama_shift', $row->nama_shift),
+                'jam_shift' => set_value('jam_shift', $row->jam_shift),
                 'user' => $user, 'users'     => $this->ion_auth->user()->row(),
                 'users'     => $this->ion_auth->user()->row(),
             );
@@ -151,6 +154,7 @@ class Shift extends CI_Controller
         } else {
             $data = array(
                 'nama_shift' => strtoupper($this->input->post('nama_shift', TRUE)),
+                'jam_shift' => strtoupper($this->input->post('jam_shift', TRUE)),
             );
 
             $this->Shift_model->update($this->input->post('id_shift', TRUE), $data);
