@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 15 Jun 2023 pada 02.01
+-- Generation Time: 15 Jun 2023 pada 19.25
 -- Versi Server: 10.1.25-MariaDB
 -- PHP Version: 5.6.31
 
@@ -21,6 +21,33 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_absensikar`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `bukutamu`
+--
+
+CREATE TABLE `bukutamu` (
+  `id_bukutamu` int(10) NOT NULL,
+  `nama_tamu` varchar(50) NOT NULL,
+  `jk` varchar(50) NOT NULL,
+  `alamat` text NOT NULL,
+  `instansi` text NOT NULL,
+  `no_hp` varchar(50) NOT NULL,
+  `keperluan` text NOT NULL,
+  `email_tamu` varchar(50) NOT NULL,
+  `keterangan` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `bukutamu`
+--
+
+INSERT INTO `bukutamu` (`id_bukutamu`, `nama_tamu`, `jk`, `alamat`, `instansi`, `no_hp`, `keperluan`, `email_tamu`, `keterangan`) VALUES
+(1, 'mardiyanto', 'Laki-Laki', '', '', '0909878980979', '', 'akabest@gmail.com', ''),
+(2, 'mardiyanto', 'Laki-Laki', 'Jl wismarini no 09 Pringsewu', 'STMIK PRINGSEWU', '0989787896', '454355', 'akabest@gmail.com', ''),
+(3, 'mardiyanto', 'Laki-Laki', 'Jl wismarini no 09 Pringsewu', 'STMIK PRINGSEWU', '0989787896', '454355', 'akabest@gmail.com', '');
 
 -- --------------------------------------------------------
 
@@ -91,6 +118,7 @@ CREATE TABLE `karyawan` (
   `id` int(11) NOT NULL,
   `id_karyawan` varchar(20) NOT NULL,
   `nama_karyawan` varchar(30) NOT NULL,
+  `no_hp` varchar(25) NOT NULL,
   `jabatan` int(11) NOT NULL,
   `id_shift` int(20) NOT NULL,
   `gedung_id` int(11) NOT NULL
@@ -100,9 +128,9 @@ CREATE TABLE `karyawan` (
 -- Dumping data untuk tabel `karyawan`
 --
 
-INSERT INTO `karyawan` (`id`, `id_karyawan`, `nama_karyawan`, `jabatan`, `id_shift`, `gedung_id`) VALUES
-(129, 'S2008001', 'MARDIYANTO', 5, 5, 12),
-(132, 'S2306129', 'NOVITA', 5, 5, 12);
+INSERT INTO `karyawan` (`id`, `id_karyawan`, `nama_karyawan`, `no_hp`, `jabatan`, `id_shift`, `gedung_id`) VALUES
+(129, 'S2008001', 'MARDIYANTO', '', 5, 5, 12),
+(132, 'S2306129', 'NOVITA', '', 5, 5, 12);
 
 -- --------------------------------------------------------
 
@@ -197,7 +225,8 @@ CREATE TABLE `presensi` (
 --
 
 INSERT INTO `presensi` (`id_absen`, `id_karyawan`, `tgl`, `jam_msk`, `jam_klr`, `id_khd`, `ket`, `id_status`) VALUES
-(69, 'S2008001', '2023-06-15', '06:55:15', '00:00:00', 1, '', 1);
+(69, 'S2008001', '2023-06-15', '06:55:15', '00:00:00', 1, '', 1),
+(70, 'S2008001', '2023-06-16', '12:01:34', '12:01:40', 1, '', 2);
 
 -- --------------------------------------------------------
 
@@ -301,6 +330,12 @@ INSERT INTO `users_groups` (`id`, `user_id`, `group_id`) VALUES
 --
 
 --
+-- Indexes for table `bukutamu`
+--
+ALTER TABLE `bukutamu`
+  ADD PRIMARY KEY (`id_bukutamu`);
+
+--
 -- Indexes for table `gedung`
 --
 ALTER TABLE `gedung`
@@ -384,6 +419,11 @@ ALTER TABLE `users_groups`
 --
 
 --
+-- AUTO_INCREMENT for table `bukutamu`
+--
+ALTER TABLE `bukutamu`
+  MODIFY `id_bukutamu` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
 -- AUTO_INCREMENT for table `gedung`
 --
 ALTER TABLE `gedung`
@@ -412,7 +452,7 @@ ALTER TABLE `kehadiran`
 -- AUTO_INCREMENT for table `login_attempts`
 --
 ALTER TABLE `login_attempts`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `menu`
 --
@@ -422,7 +462,7 @@ ALTER TABLE `menu`
 -- AUTO_INCREMENT for table `presensi`
 --
 ALTER TABLE `presensi`
-  MODIFY `id_absen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
+  MODIFY `id_absen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 --
 -- AUTO_INCREMENT for table `shift`
 --
