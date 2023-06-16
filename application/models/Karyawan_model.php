@@ -31,7 +31,7 @@ class Karyawan_model extends CI_Model
 
     function get_all_query()
     {
-        $sql = "SELECT a.id_karyawan,a.nama_karyawan,b.nama_jabatan,c.nama_shift,a.gedung_id
+        $sql = "SELECT a.id_karyawan,a.nip,a.nip,a.no_hp,a.nama_karyawan,b.nama_jabatan,c.nama_shift,a.gedung_id
                 from karyawan as a,jabatan as b,shift as c
                 where b.id_jabatan=a.jabatan
                 and a.id_shift=c.id_shift";
@@ -41,7 +41,7 @@ class Karyawan_model extends CI_Model
 
     function get_by_id_query($id)
     {
-        $sql = "SELECT a.id_karyawan,a.nama_karyawan,b.nama_jabatan,d.nama_shift,c.nama_gedung
+        $sql = "SELECT a.id_karyawan,a.nip,a.nip,a.no_hp,a.nama_karyawan,b.nama_jabatan,d.nama_shift,c.nama_gedung
         from karyawan as a,jabatan as b,gedung as c,shift as d
         where b.id_jabatan=a.jabatan
         and a.gedung_id=c.gedung_id
@@ -53,7 +53,7 @@ class Karyawan_model extends CI_Model
 
     function getData()
     {
-        $this->datatables->select('a.id,a.id_karyawan,a.nama_karyawan,b.nama_jabatan,d.nama_shift,c.nama_gedung')
+        $this->datatables->select('a.id,a.id_karyawan,a.nip,a.nip,a.no_hp,a.nama_karyawan,b.nama_jabatan,d.nama_shift,c.nama_gedung')
             ->from('karyawan as a,jabatan as b,gedung as c,shift as d')
             ->where('b.id_jabatan=a.jabatan')
             ->where('a.gedung_id=c.gedung_id')

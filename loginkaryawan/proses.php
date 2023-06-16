@@ -1,6 +1,6 @@
 <?php 
 session_start();
-
+require_once '../application/libraries/qrcode/qrlib.php'; 
 // Periksa apakah karyawan sudah login atau belum
 if (!isset($_SESSION['id_karyawan'])) {
     header("Location: login.php");
@@ -68,17 +68,42 @@ echo"  <div class='row'>
   <div class='nav-tabs-custom'>
     <ul class='nav nav-tabs'>
       <li class='active'><a href='#activity' data-toggle='tab'>BARCODE ABSEN</a></li>
-      
+      <li><a href='logout.php'>Logout</a></li>
     </ul>
     <div class='tab-content'>
       <div class='active tab-pane' id='activity'>
         <!-- Post -->
         <div class='post'>
           <div class='row margin-bottom'>
-            <div class='col-sm-6'>
-    <img class='img-responsive' src='../uploads/qr_image/$filename' alt='Photo'>
+            <div class='col-sm-6'>";
+$filename = $id_karyawan . "code.png"; // Nama file QR Code
+// Path untuk menyimpan QR Code
+$imagePath = "../uploads/qr_image/$filename"; // Ganti dengan path lokasi penyimpanan QR Code
 
-            </div><!-- /.col -->
+// Cek apakah file gambar QR Code sudah ada
+if (!file_exists($imagePath)) {
+    // Tampilkan tombol "Generate QR Code"
+    echo '<form action="" method="post">
+            <input type="hidden" name="generate_qr" value="1">
+            <button type="submit">Generate QR Code</button>
+          </form>';
+} else {
+    // File gambar QR Code sudah ada, tampilkan gambar
+    echo "<img class='img-responsive' src=\"$imagePath\" alt=\"QR Code\"><br> 
+    <a href='qrcode.php?id_karyawan=$id_karyawan' target='_blank' class='btn btn-primary btn-block'><b>CETAK KARTU</b></a>
+    ";
+}
+
+// Cek apakah tombol "Generate QR Code" diklik
+if (isset($_POST['generate_qr']) && $_POST['generate_qr'] == 1) {
+    // Generate QR Code dan simpan sebagai file gambar
+    QRcode::png($id_karyawan, $imagePath, QR_ECLEVEL_H, 10);
+    echo "<script type='text/javascript'>alert('QR Code berhasil disimpan sebagai file $filename');</script>";
+    echo "<script>window.location=('index.php?aksi=home')</script>";
+}
+    
+
+            echo"</div><!-- /.col -->
 
           </div><!-- /.row -->
 

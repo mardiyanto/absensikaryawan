@@ -11,7 +11,27 @@
                         <div class="form-group">
                             <label for="nama_karyawan" class="control-label">Nama Karyawan</label>
                             <div class="input-group">
-                                <input type="text" class="form-control" name="nama_karyawan" id="nama_karyawan" data-error="Nama Anggota harus diisi" placeholder="Nama Karyawan" value="<?php echo $nama_karyawan; ?>" required />
+                                <input type="text" class="form-control" name="nama_karyawan" id="nama_karyawan" data-error="Nama  harus diisi" placeholder="Nama Karyawan" value="<?php echo $nama_karyawan; ?>" required />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-user"></span>
+                                </span>
+                            </div>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="nama_karyawan" class="control-label">Nip</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="nip" id="nip" data-error="Nip harus diisi" placeholder="Nip Karyawan" value="<?php echo $nip; ?>" required />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-user"></span>
+                                </span>
+                            </div>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="nama_karyawan" class="control-label">NO/HP ATAU WA contoh (62823898373)</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="no_hp" id="no_hp" data-error="NO HP WA harus diisi" placeholder="NO HP ATAU WA Karyawan" value="<?php echo $no_hp; ?>" required />
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-user"></span>
                                 </span>

@@ -17,6 +17,10 @@
                             <td><?php echo $nama_karyawan; ?></td>
                         </tr>
                         <tr>
+                            <td>HP</td>
+                            <td><a href='https://api.whatsapp.com/send?phone="<?php echo $no_hp; ?>"&text="untuk login dan cetak kartu qrcode gunakan id <?php echo $id_karyawan; ?>"'><?php echo $no_hp; ?></a></td>
+                        </tr>
+                        <tr>
                             <td>Jabatan</td>
                             <td><?php echo $nama_jabatan; ?></td>
                         </tr>

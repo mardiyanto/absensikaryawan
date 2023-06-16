@@ -80,6 +80,8 @@ class Karyawan extends CI_Controller
             $data = array(
                 'id_karyawan' => $row->id_karyawan,
                 'nama_karyawan' => $row->nama_karyawan,
+                'nip' => $row->nip,
+                'no_hp' => $row->no_hp,
                 'nama_jabatan' => $row->nama_jabatan,
                 'nama_gedung' => $row->nama_gedung,
                 'nama_shift' => $row->nama_shift,
@@ -107,7 +109,9 @@ class Karyawan extends CI_Controller
             'button' => 'Create',
             'action' => site_url('karyawan/create_action'),
             'id_karyawan' => set_value('id_karyawan'),
+            'nip' => set_value('nip'),
             'nama_karyawan' => set_value('nama_karyawan'),
+            'no_hp' => set_value('no_hp'),
             'jabatan' => set_value('jabatan'),
             'id_shift' => set_value('id_shift'),
             'gedung_id' => set_value('gedung_id'),
@@ -134,6 +138,8 @@ class Karyawan extends CI_Controller
             $data = array(
                 'nama_karyawan' => ucwords($this->input->post('nama_karyawan', TRUE)),
                 'id_karyawan' => $nourut,
+                'nip' => $this->input->post('nip', TRUE),
+                'no_hp' => $this->input->post('no_hp', TRUE),
                 'jabatan' => $this->input->post('jabatan', TRUE),
                 'id_shift' => $this->input->post('id_shift', TRUE),
                 'gedung_id' => $this->input->post('gedung_id', TRUE),
@@ -171,6 +177,8 @@ class Karyawan extends CI_Controller
                 'action' => site_url('karyawan/update_action'),
                 'id_karyawan' => set_value('id_karyawan', $row->id_karyawan),
                 'nama_karyawan' => set_value('nama_karyawan', $row->nama_karyawan),
+                'nip' => set_value('nip', $row->nip),
+                'no_hp' => set_value('no_hp', $row->no_hp),
                 'jabatan' => set_value('jabatan', $row->jabatan),
                 'id_shift' => set_value('shift', $row->id_shift),
                 'gedung_id' => set_value('gedung_id', $row->gedung_id),
@@ -204,6 +212,8 @@ class Karyawan extends CI_Controller
             $data = array(
                 'id_karyawan' => $updatekode,
                 'nama_karyawan' => $this->input->post('nama_karyawan', TRUE),
+                'nip' => $this->input->post('nip', TRUE),
+                'no_hp' => $this->input->post('no_hp', TRUE),
                 'jabatan' => $this->input->post('jabatan', TRUE),
                 'id_shift' => $this->input->post('id_shift', TRUE),
                 'gedung_id' => $this->input->post('gedung_id', TRUE),
@@ -235,6 +245,8 @@ class Karyawan extends CI_Controller
     public function _rules()
     {
         $this->form_validation->set_rules('nama_karyawan', 'nama karyawan', 'trim|required');
+        $this->form_validation->set_rules('nip', 'nip', 'trim|required');
+        $this->form_validation->set_rules('no_hp', 'no_hp', 'trim|required');
         $this->form_validation->set_rules('jabatan', 'jabatan', 'trim|required');
         $this->form_validation->set_rules('id_shift', 'id_shift', 'trim|required');
         $this->form_validation->set_rules('id_karyawan', 'id_karyawan', 'trim');
