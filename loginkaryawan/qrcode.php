@@ -10,7 +10,7 @@ if (!isset($_SESSION['id_karyawan'])) {
 $id_karyawan = $_SESSION['id_karyawan'];
 $nama_karyawan = $_SESSION['nama_karyawan'];
 $jabatan = $_SESSION['jabatan'];
-
+$filename1 = $id_karyawan . "code.png"; 
 ?>
 <style>
 .card {
@@ -51,7 +51,7 @@ button:hover, a:hover {
 <?php $kate2=mysqli_query($koneksi," SELECT * FROM karyawan,jabatan,shift WHERE karyawan.id_shift=shift.id_shift AND karyawan.jabatan=jabatan.id_jabatan AND karyawan.id_karyawan='$id_karyawan'");
     $r=mysqli_fetch_array($kate2); ?>
 <div class="card">
-  <img src="../uploads/qrcode_12345.png" alt="John" style="width:100%">
+  <img src="../uploads/qr_image/<?php echo"$filename1"; ?>" alt="John" style="width:100%">
   <h1><?php echo"$nama_karyawan"; ?></h1>
   <p class="title"><?php echo "$r[nama_jabatan]"; ?></p>
   <p>shift :<?php echo "$r[nama_shift]"; ?> Jam :<?php echo "$r[jam_shift]"; ?></p></br></br>
