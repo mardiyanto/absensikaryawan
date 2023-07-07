@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 19 Jun 2023 pada 10.02
+-- Waktu pembuatan: 07 Jul 2023 pada 14.27
 -- Versi server: 10.1.34-MariaDB
 -- Versi PHP: 5.6.37
 
@@ -168,13 +168,6 @@ CREATE TABLE `login_attempts` (
   `time` int(11) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data untuk tabel `login_attempts`
---
-
-INSERT INTO `login_attempts` (`id`, `ip_address`, `login`, `time`) VALUES
-(1, '::1', 'admin@admin', 1686879238);
-
 -- --------------------------------------------------------
 
 --
@@ -336,7 +329,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `email`, `activation_selector`, `activation_code`, `forgotten_password_selector`, `forgotten_password_code`, `forgotten_password_time`, `remember_selector`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`) VALUES
-(26, '::1', 'admin@admin.com', '$2y$12$MPcQlOck9fzd/5UjJ6iIXuhZivhkXdfoVD2xFXpZTnZ2IWQw/nFhW', 'admin@admin.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1556798313, 1686900967, 1, 'admin', 'nistator', NULL, '123412341234'),
+(26, '::1', 'admin@admin.com', '$2y$12$MPcQlOck9fzd/5UjJ6iIXuhZivhkXdfoVD2xFXpZTnZ2IWQw/nFhW', 'admin@admin.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1556798313, 1688732681, 1, 'admin', 'nistator', NULL, '123412341234'),
 (48, '::1', 'aka@gmail.com', '$2y$10$ohi.oAWq1bLB04tR37o2QujDDULFdWom4VIKgqZL2FzSsavpxbcy6', 'aka@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1686784600, 1686784722, 1, 'OP', 'OP', 'Nama Perusahaan', '097876786769');
 
 -- --------------------------------------------------------
