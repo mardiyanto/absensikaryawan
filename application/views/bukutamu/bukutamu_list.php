@@ -15,10 +15,11 @@
         <div class='col-xs-12'>
             <div class='box box-primary'>
                 <div class='box-header with-border'>
-                    <h3 class='box-title'>MANU MANAGEMENT</h3>
-  
+                    <h3 class='box-title'>DAFTAR BUKU TAMU</h3>
+                    
                 </div><!-- /.box-header -->
                 <div class='box-body'>
+                <a href="<?php echo site_url('CetakBukuTamu') ?>" class="btn btn-default" target="_blank">laporan Buku Tamu</a>
                     <table id="mytable" class="table table-bordered table-hover display" style="width:100%;">
                         <thead>
                             <tr>

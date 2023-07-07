@@ -72,3 +72,4 @@ $route['lokasi/lihat/(:num)'] = 'lokasi/rd/$1';
 $route['presensi/lihat/(:num)'] = 'presensi/rd/$1';
 $route['audit/data'] = 'user_audit_trails/data';
 
+
