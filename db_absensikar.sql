@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
+-- version 4.8.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 07 Jul 2023 pada 14.25
--- Versi Server: 10.1.25-MariaDB
--- PHP Version: 5.6.31
+-- Waktu pembuatan: 07 Jul 2023 pada 14.27
+-- Versi server: 10.1.34-MariaDB
+-- Versi PHP: 5.6.37
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -66,8 +66,7 @@ CREATE TABLE `gedung` (
 --
 
 INSERT INTO `gedung` (`gedung_id`, `nama_gedung`, `alamat`) VALUES
-(12, 'LOKASI 1', 'JALAN WISMARINI NO 01 PRINGSEWU LAMPUNG'),
-(13, 'LOKASI 2', 'Alamat 2');
+(12, 'LOKASI 1', 'JALAN WISMARINI NO 01 PRINGSEWU LAMPUNG');
 
 -- --------------------------------------------------------
 
@@ -117,6 +116,7 @@ INSERT INTO `jabatan` (`id_jabatan`, `nama_jabatan`) VALUES
 CREATE TABLE `karyawan` (
   `id` int(11) NOT NULL,
   `id_karyawan` varchar(20) NOT NULL,
+  `nip` varchar(100) NOT NULL,
   `nama_karyawan` varchar(30) NOT NULL,
   `no_hp` varchar(25) NOT NULL,
   `jabatan` int(11) NOT NULL,
@@ -128,9 +128,10 @@ CREATE TABLE `karyawan` (
 -- Dumping data untuk tabel `karyawan`
 --
 
-INSERT INTO `karyawan` (`id`, `id_karyawan`, `nama_karyawan`, `no_hp`, `jabatan`, `id_shift`, `gedung_id`) VALUES
-(129, 'S2008001', 'MARDIYANTO', '', 5, 5, 12),
-(132, 'S2306129', 'NOVITA', '', 5, 5, 12);
+INSERT INTO `karyawan` (`id`, `id_karyawan`, `nip`, `nama_karyawan`, `no_hp`, `jabatan`, `id_shift`, `gedung_id`) VALUES
+(129, 'S2008001', '0206109101', 'MARDIYANTO', '6282373971991', 5, 5, 12),
+(132, 'S2306129', '0206109104', 'NOVITA', '082323359687', 5, 5, 12),
+(133, 'S2306132', '0206109102', 'WIDIANTO', '082323359687', 5, 5, 12);
 
 -- --------------------------------------------------------
 
@@ -201,7 +202,9 @@ INSERT INTO `menu` (`id`, `name`, `link`, `icon`, `protected`, `is_active`, `is_
 (36, 'Histori Absensi', 'presensi', 'fa fa-paperclip', NULL, 1, 41, 9),
 (39, 'Rekap Absensi', 'rekap', 'fa fa-list-alt', NULL, 1, 41, 10),
 (41, 'Data Absensi', 'dataabs', 'far fa-folder-open', NULL, 1, 0, 8),
-(42, 'setting', 'setting', 'fas fa-cogs', NULL, 1, 0, 11);
+(42, 'setting', 'setting', 'fas fa-cogs', NULL, 1, 0, 11),
+(43, 'BUKU TAMU', 'bukutamu', 'far fa-address-book', NULL, 1, 42, 0),
+(44, 'PROFIL', 'profil', 'fas fa-atom', NULL, 1, 42, 0);
 
 -- --------------------------------------------------------
 
@@ -226,7 +229,31 @@ CREATE TABLE `presensi` (
 
 INSERT INTO `presensi` (`id_absen`, `id_karyawan`, `tgl`, `jam_msk`, `jam_klr`, `id_khd`, `ket`, `id_status`) VALUES
 (69, 'S2008001', '2023-06-15', '06:55:15', '00:00:00', 1, '', 1),
-(70, 'S2008001', '2023-06-16', '12:01:34', '12:01:40', 1, '', 2);
+(70, 'S2008001', '2023-06-16', '12:01:34', '12:01:40', 1, '', 2),
+(71, 'S2306132', '2023-06-16', '11:10:52', '11:11:29', 1, '', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `profil`
+--
+
+CREATE TABLE `profil` (
+  `id_profil` int(100) NOT NULL,
+  `nama_instansi` varchar(100) NOT NULL,
+  `alamat` text NOT NULL,
+  `no_hp` varchar(18) NOT NULL,
+  `tentang` text NOT NULL,
+  `email_instansi` varchar(100) NOT NULL,
+  `alias` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `profil`
+--
+
+INSERT INTO `profil` (`id_profil`, `nama_instansi`, `alamat`, `no_hp`, `tentang`, `email_instansi`, `alias`) VALUES
+(1, 'PEKON BULOK KARTO', 'JL BULOK KARTO KAB TANGGGAKUS', '082323359687', 'Desa Bulok Karto adalah sebuah desa yang terletak di daerah yang indah dan alami. Desa ini dikenal karena kehidupan masyarakatnya yang ramah dan tradisi yang kaya. Desa Bulok Karto memiliki sejarah yang kaya dan unik, menjadi bagian dari warisan budaya yang berharga.  Desa ini memiliki keindahan alam yang menakjubkan, dengan perbukitan hijau yang melingkupi wilayahnya. Penduduk desa ini mayoritas berprofesi sebagai petani dan pengrajin lokal. Mereka mengandalkan pertanian sebagai mata pencaharian utama, dengan bertani padi, sayuran, dan buah-buahan.  Selain pertanian, Desa Bulok Karto juga dikenal dengan kerajinan tangan yang berkualitas. Penduduk desa memiliki keahlian dalam membuat kerajinan dari bambu, seperti anyaman dan kerajinan rumah tangga lainnya. Produk-produk kerajinan tangan mereka dikenal akan keindahannya dan menjadi salah satu potensi ekonomi lokal.  Selain itu, Desa Bulok Karto juga memiliki warisan budaya yang kaya. Masyarakat desa menjaga dan melestarikan adat istiadat serta tradisi-tradisi lokal mereka. Mereka sering mengadakan acara-acara tradisional seperti festival dan pertunjukan seni yang menampilkan tarian dan musik tradisional daerah.', 'bulokkarto@desa.id', 'OK');
 
 -- --------------------------------------------------------
 
@@ -302,7 +329,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `email`, `activation_selector`, `activation_code`, `forgotten_password_selector`, `forgotten_password_code`, `forgotten_password_time`, `remember_selector`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`) VALUES
-(26, '::1', 'admin@admin.com', '$2y$12$MPcQlOck9fzd/5UjJ6iIXuhZivhkXdfoVD2xFXpZTnZ2IWQw/nFhW', 'admin@admin.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1556798313, 1688732388, 1, 'admin', 'nistator', NULL, '123412341234'),
+(26, '::1', 'admin@admin.com', '$2y$12$MPcQlOck9fzd/5UjJ6iIXuhZivhkXdfoVD2xFXpZTnZ2IWQw/nFhW', 'admin@admin.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1556798313, 1688732681, 1, 'admin', 'nistator', NULL, '123412341234'),
 (48, '::1', 'aka@gmail.com', '$2y$10$ohi.oAWq1bLB04tR37o2QujDDULFdWom4VIKgqZL2FzSsavpxbcy6', 'aka@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1686784600, 1686784722, 1, 'OP', 'OP', 'Nama Perusahaan', '097876786769');
 
 -- --------------------------------------------------------
@@ -330,73 +357,79 @@ INSERT INTO `users_groups` (`id`, `user_id`, `group_id`) VALUES
 --
 
 --
--- Indexes for table `bukutamu`
+-- Indeks untuk tabel `bukutamu`
 --
 ALTER TABLE `bukutamu`
   ADD PRIMARY KEY (`id_bukutamu`);
 
 --
--- Indexes for table `gedung`
+-- Indeks untuk tabel `gedung`
 --
 ALTER TABLE `gedung`
   ADD PRIMARY KEY (`gedung_id`);
 
 --
--- Indexes for table `groups`
+-- Indeks untuk tabel `groups`
 --
 ALTER TABLE `groups`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `jabatan`
+-- Indeks untuk tabel `jabatan`
 --
 ALTER TABLE `jabatan`
   ADD PRIMARY KEY (`id_jabatan`);
 
 --
--- Indexes for table `karyawan`
+-- Indeks untuk tabel `karyawan`
 --
 ALTER TABLE `karyawan`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `kehadiran`
+-- Indeks untuk tabel `kehadiran`
 --
 ALTER TABLE `kehadiran`
   ADD PRIMARY KEY (`id_khd`);
 
 --
--- Indexes for table `login_attempts`
+-- Indeks untuk tabel `login_attempts`
 --
 ALTER TABLE `login_attempts`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `menu`
+-- Indeks untuk tabel `menu`
 --
 ALTER TABLE `menu`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `presensi`
+-- Indeks untuk tabel `presensi`
 --
 ALTER TABLE `presensi`
   ADD PRIMARY KEY (`id_absen`);
 
 --
--- Indexes for table `shift`
+-- Indeks untuk tabel `profil`
+--
+ALTER TABLE `profil`
+  ADD PRIMARY KEY (`id_profil`);
+
+--
+-- Indeks untuk tabel `shift`
 --
 ALTER TABLE `shift`
   ADD PRIMARY KEY (`id_shift`);
 
 --
--- Indexes for table `stts`
+-- Indeks untuk tabel `stts`
 --
 ALTER TABLE `stts`
   ADD PRIMARY KEY (`id_status`);
 
 --
--- Indexes for table `users`
+-- Indeks untuk tabel `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
@@ -406,7 +439,7 @@ ALTER TABLE `users`
   ADD UNIQUE KEY `uc_remember_selector` (`remember_selector`);
 
 --
--- Indexes for table `users_groups`
+-- Indeks untuk tabel `users_groups`
 --
 ALTER TABLE `users_groups`
   ADD PRIMARY KEY (`id`),
@@ -415,74 +448,93 @@ ALTER TABLE `users_groups`
   ADD KEY `fk_users_groups_groups1_idx` (`group_id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `bukutamu`
+-- AUTO_INCREMENT untuk tabel `bukutamu`
 --
 ALTER TABLE `bukutamu`
   MODIFY `id_bukutamu` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
--- AUTO_INCREMENT for table `gedung`
+-- AUTO_INCREMENT untuk tabel `gedung`
 --
 ALTER TABLE `gedung`
-  MODIFY `gedung_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `gedung_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
 --
--- AUTO_INCREMENT for table `groups`
+-- AUTO_INCREMENT untuk tabel `groups`
 --
 ALTER TABLE `groups`
   MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
--- AUTO_INCREMENT for table `jabatan`
+-- AUTO_INCREMENT untuk tabel `jabatan`
 --
 ALTER TABLE `jabatan`
   MODIFY `id_jabatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
--- AUTO_INCREMENT for table `karyawan`
+-- AUTO_INCREMENT untuk tabel `karyawan`
 --
 ALTER TABLE `karyawan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=133;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=134;
+
 --
--- AUTO_INCREMENT for table `kehadiran`
+-- AUTO_INCREMENT untuk tabel `kehadiran`
 --
 ALTER TABLE `kehadiran`
   MODIFY `id_khd` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
--- AUTO_INCREMENT for table `login_attempts`
+-- AUTO_INCREMENT untuk tabel `login_attempts`
 --
 ALTER TABLE `login_attempts`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
--- AUTO_INCREMENT for table `menu`
+-- AUTO_INCREMENT untuk tabel `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+
 --
--- AUTO_INCREMENT for table `presensi`
+-- AUTO_INCREMENT untuk tabel `presensi`
 --
 ALTER TABLE `presensi`
-  MODIFY `id_absen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+  MODIFY `id_absen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+
 --
--- AUTO_INCREMENT for table `shift`
+-- AUTO_INCREMENT untuk tabel `profil`
+--
+ALTER TABLE `profil`
+  MODIFY `id_profil` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT untuk tabel `shift`
 --
 ALTER TABLE `shift`
   MODIFY `id_shift` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
 --
--- AUTO_INCREMENT for table `stts`
+-- AUTO_INCREMENT untuk tabel `stts`
 --
 ALTER TABLE `stts`
   MODIFY `id_status` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+
 --
--- AUTO_INCREMENT for table `users_groups`
+-- AUTO_INCREMENT untuk tabel `users_groups`
 --
 ALTER TABLE `users_groups`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
