@@ -62,7 +62,7 @@
                             <div class="help-block with-errors"></div>
                         </div>
                         <?php endif; ?>
-                        <?php if ($id_khd == 1) : ?>
+                        <?php if ($id_khd == 3) : ?>
                         <div class="form-group">
                             <label for="id_shift" class="control-label">Kehadiran</label>
                             <div class="input-group">
@@ -83,7 +83,7 @@
                             </div>
                         </div>
                         <?php endif; ?>
-                        <?php if ($id_khd != 1) : ?>
+                        <?php if ($id_khd != 3) : ?>
                         <div class="form-group">
                             <label for="id_shift" class="control-label">Keterangan</label>
                             <div class="input-group">
